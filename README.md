@@ -36,7 +36,7 @@ Ramverk: Windows Presentation Foundation (WPF)
 
 Arkitektur: MVVM (Model-View-ViewModel)
 
-Andra verktyg: NuGet-paket, Behaviors, DispatcherTimer
+Andra verktyg: NuGet-paket, Behaviors, xUnit, DispatcherTimer
 
 
 Arkitektur och MVVM:
@@ -91,6 +91,9 @@ Bomber: Genereras slumpvis och måste undvikas av spelaren.
 Boosters: Ger fördelar som ökad rörelsehastighet och bombstyrka.
 
 Game Over: Om spelaren träffas av en bomb avslutas spelet.
+
+Tester:
+Vi har skrivit enhetstester för att säkerställa spelets funktionalitet och kvalitet. Testerna är implementerade med hjälp av xUnit och täcker spelmekanik, bombinteraktion och navigering.
 
 
 Framtida Utveckling:
