@@ -57,8 +57,12 @@ Utöka nivågenerationen med fler variationer och tematiska miljöer.
 Publicera projektet på en server för att möjliggöra online-åtkomst och spel via webben.
 
 Projektteam:
+
 Liam Örberg - Utvecklare (https://github.com/lohrberg)
+
 Markus Olsson - Utvecklare (https://github.com/MarkusOlsson123)
+
 Johan Andersson - Utvecklare (https://github.com/JohanAnderssonOSD)
+
 Christine Lundberg - Utvecklare (Github länk saknas)
 
