@@ -40,37 +40,68 @@ Andra verktyg: NuGet-paket, Behaviors, DispatcherTimer
 
 
 Arkitektur och MVVM:
+
 Spelet är uppbyggt enligt MVVM-arkitekturen för att separera logik och gränssnitt:
+
 Model: Hanterar speldata som banor, spelobjekt och regler.
+
 View: Ansvarar för gränssnittet och designen, byggt med XAML.
+
 ViewModel: Innehåller bindningar och spelmekanik som styr View.
 
+
 Installation och Uppstart:
+
 Krav:
+
 Visual Studio (med stöd för WPF).
+
 .NET Framework 4.7 eller högre.
 
+
+
 Installationssteg:
+
 Klona repot:
+
 git clone https://github.com/lohrberg/Bomberman.git
+
 Öppna lösningen i Visual Studio.
+
 Bygg och kör projektet genom att trycka på F5.
 
+
+
 Kontroller:
+
 Piltangenterna: För att röra spelaren.
+
 Mellanslag: För att placera bomber.
+
 Hjälp-knapp: För att visa instruktioner och kort förklarning.
 
+
+
 Spelmekanik:
+
 Mål: Spräng hinder och undvik bomber för att samla poäng och överleva så länge som möjligt.
+
 Bomber: Genereras slumpvis och måste undvikas av spelaren.
+
 Boosters: Ger fördelar som ökad rörelsehastighet och bombstyrka.
+
 Game Over: Om spelaren träffas av en bomb avslutas spelet.
 
+
 Framtida Utveckling:
+
 Implementera multiplayer-läge för konkurrens mellan spelare.
+
 Utöka nivågenerationen med fler variationer och tematiska miljöer.
+
 Publicera projektet på en server för att möjliggöra online-åtkomst och spel via webben.
+
+
 
 Projektteam:
 
