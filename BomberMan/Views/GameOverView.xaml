@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="BomberMan.Views.GameOverView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BomberMan.Views"
+             xmlns:local5="clr-namespace:BomberMan.Services"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <!-- Boolean to Visibility Converter -->
+        <local5:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Assets/Images/MainMenuBg.png" />
+        </Grid.Background>
+
+        <Border Width="500" Height="700" Canvas.Left="210" Canvas.Top="100"
+        BorderBrush="#003366" BorderThickness="5" CornerRadius="15">
+            <Border.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="5" BlurRadius="15"/>
+            </Border.Effect>
+
+            <StackPanel>
+
+                <!-- Gradient Background liknande bilden -->
+                <StackPanel.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#A3C6FF" Offset="0" />
+                        <!-- Ljusblå bakgrund -->
+                        <GradientStop Color="#5BA7FF" Offset="1" />
+                        <!-- Något mörkare blå för gradient -->
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+
+                <!-- GAME OVER Label med lättläst färg -->
+                <Label Content="GAME OVER!" FontSize="40" FontWeight="Bold" 
+               Foreground="#FF4500" HorizontalAlignment="Center" Margin="20,10,20,20" />
+                <!-- Orange färg som kontrasterar bra -->
+
+                <!-- High Score Label -->
+                <Label Content="{Binding LabelHighScore}" FontSize="25" HorizontalAlignment="Center" 
+               Foreground="#FFD700" Margin="10,0,0,0" FontWeight="Bold" />
+                <!-- Guldfärg som är lätt att läsa mot bakgrunden -->
+
+                <!-- ListBox för spelarnas poäng -->
+                <ListBox ItemsSource="{Binding PlayerHighScores}" Height="260" Width="250" Padding="10"
+                 Background="#2E3A4E" Foreground="#FFFFFF" BorderBrush="#FF4500" BorderThickness="2" 
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListBox.Effect>
+                        <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                    </ListBox.Effect>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="{Binding PlayerName}" FontSize="16" Margin="5" Foreground="#FF4500"/>
+                                <!-- Orange text -->
+                                <TextBlock Text="{Binding PlayerHighScore}" FontSize="16" Margin="5" Foreground="#FFD700"/>
+                                <!-- Gul text -->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Enter Name Label -->
+                <Label Content="ENTER YOUR NAME" FontSize="25" HorizontalAlignment="Center" 
+               Foreground="#FFD700" Margin="10,0,0,0" FontWeight="Bold"
+               Visibility="{Binding VisibilitycontrollGameOverView, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <!-- TextBox för namninput -->
+                <TextBox x:Name="PlayerNametb" Width="250" Height="50" Margin="10,5,10,5" Padding="10"
+                 Text="{Binding PlayerNameFromTextBox, Mode=TwoWay}" Background="#2E3A4E" 
+                 Foreground="#FFFFFF" BorderBrush="#FF4500" BorderThickness="2" FontSize="16"
+                 Visibility="{Binding VisibilitycontrollGameOverView, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <!-- Knapp för att lägga till highscore -->
+                <Button Content="ADD NEW HIGHSCORE" Command="{Binding AddHighScoreCommand}"
+                Width="200" Height="50" 
+                HorizontalAlignment="Center" Margin="10"
+                Background="#FF4500" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" BorderThickness="0" 
+                Cursor="Hand" Visibility="{Binding VisibilitycontrollGameOverView, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <!-- Knapp för att starta om spelet -->
+                <Button Content="Restart Game" Command="{Binding RestartButtonCommand}" 
+                Width="200" Height="50" 
+                HorizontalAlignment="Center" Margin="10"
+                Background="#FF4500" Foreground="#FFFFFF" FontSize="16" 
+                FontWeight="Bold" BorderThickness="0" Cursor="Hand"
+                Visibility="{Binding VisibilitycontrollRestartGame, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            </StackPanel>
+        </Border>
+
+
+    </Grid>
+</UserControl>

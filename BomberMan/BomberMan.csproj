@@ -1,0 +1,202 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Audio\Effects\add.wav" />
+    <None Remove="Assets\Audio\Effects\orc.wav" />
+    <None Remove="Assets\Audio\Music\BgMusic.wav" />
+    <None Remove="Assets\Audio\Music\BgMusic_2.wav" />
+    <None Remove="Assets\Audio\Music\BgMusic_3.wav" />
+    <None Remove="Assets\Audio\Music\BgMusic_4.wav" />
+    <None Remove="Assets\Audio\Music\BgMusic_5.mp3" />
+    <None Remove="Assets\Audio\Music\BgMusic_5.wav" />
+    <None Remove="Assets\Images\bg.jpg" />
+    <None Remove="Assets\Images\BombermanLogo.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb2_01.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb2_02.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb2_03.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb2_04.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb_02.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb_03.png" />
+    <None Remove="Assets\Images\Bombs\RegularBomb\bomb_04.png" />
+    <None Remove="Assets\Images\Items\bomb.png" />
+    <None Remove="Assets\Images\Items\boot.png" />
+    <None Remove="Assets\Images\Items\coin.png" />
+    <None Remove="Assets\Images\Items\diamond.png" />
+    <None Remove="Assets\Images\MainMenuBg.jpg" />
+    <None Remove="Assets\Images\MainMenuBg.png" />
+    <None Remove="Assets\Images\Menu\arrowkeys.jpg" />
+    <None Remove="Assets\Images\Menu\arrowkeys.png" />
+    <None Remove="Assets\Images\Menu\Spacebar.png" />
+    <None Remove="Assets\Images\Numbers\num_0.png" />
+    <None Remove="Assets\Images\Numbers\num_1.png" />
+    <None Remove="Assets\Images\Numbers\num_2.png" />
+    <None Remove="Assets\Images\Numbers\num_3.png" />
+    <None Remove="Assets\Images\Numbers\num_4.png" />
+    <None Remove="Assets\Images\Numbers\num_5.png" />
+    <None Remove="Assets\Images\Numbers\num_6.png" />
+    <None Remove="Assets\Images\Numbers\num_7.png" />
+    <None Remove="Assets\Images\Numbers\num_8.png" />
+    <None Remove="Assets\Images\Numbers\num_9.png" />
+    <None Remove="Assets\Images\Player\character_01.png" />
+    <None Remove="Assets\Images\Player\character_02.png" />
+    <None Remove="Assets\Images\Player\character_03.png" />
+    <None Remove="Assets\Images\Player\character_04.png" />
+    <None Remove="Assets\Images\Player\character_05.png" />
+    <None Remove="Assets\Images\Player\character_06.png" />
+    <None Remove="Assets\Images\Player\character_07.png" />
+    <None Remove="Assets\Images\Player\character_08.png" />
+    <None Remove="Assets\Images\Player\character_09.png" />
+    <None Remove="Assets\Images\Player\character_10.png" />
+    <None Remove="Assets\Images\Player\character_11.png" />
+    <None Remove="Assets\Images\Player\character_12.png" />
+    <None Remove="Assets\Images\Player\character_13.png" />
+    <None Remove="Assets\Images\Player\character_14.png" />
+    <None Remove="Assets\Images\Player\character_15.png" />
+    <None Remove="Assets\Images\Player\character_16.png" />
+    <None Remove="Assets\Images\Player\dead2.png" />
+    <None Remove="Assets\Images\Tiles\BrownRock_01.png" />
+    <None Remove="Assets\Images\Tiles\fire.png" />
+    <None Remove="Assets\Images\Tiles\GrassTile.png" />
+    <None Remove="Assets\Images\Tiles\ground5.png" />
+    <None Remove="Assets\Images\Tiles\Ground_Tile_01_A.png" />
+    <None Remove="Assets\Images\Tiles\Ground_Tile_01_B.png" />
+    <None Remove="Assets\Images\Tiles\Ground_Tile_01_C.png" />
+    <None Remove="Assets\Images\Tiles\LightRock_01.png" />
+    <None Remove="Json\Highscore.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Audio\Music\BgMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Music\BgMusic_3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Music\BgMusic_4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Music\BgMusic_5.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Audio\Music\BgMusic_2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\Audio\Effects\add.wav" />
+    <Resource Include="Assets\Audio\Effects\orc.wav" />
+    <Content Include="Assets\Audio\Music\BgMusic_5.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\Images\BombermanLogo.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb2_01.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb2_02.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb2_03.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb2_04.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb_01.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb_02.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb_03.png" />
+    <Resource Include="Assets\Images\Bombs\RegularBomb\bomb_04.png" />
+    <Resource Include="Assets\Images\Items\bomb.png" />
+    <Resource Include="Assets\Images\Items\boot.png" />
+    <Resource Include="Assets\Images\Items\coin.png" />
+    <Resource Include="Assets\Images\Items\diamond.png" />
+    <Resource Include="Assets\Images\MainMenuBg.png" />
+    <Resource Include="Assets\Images\Menu\arrowkeys.jpg" />
+    <Resource Include="Assets\Images\Menu\arrowkeys.png" />
+    <Resource Include="Assets\Images\Menu\Spacebar.png" />
+    <Resource Include="Assets\Images\Numbers\num_1.png" />
+    <Resource Include="Assets\Images\Numbers\num_2.png" />
+    <Resource Include="Assets\Images\Numbers\num_5.png" />
+    <Resource Include="Assets\Images\Numbers\num_4.png" />
+    <Resource Include="Assets\Images\Numbers\num_9.png" />
+    <Resource Include="Assets\Images\Numbers\num_0.png" />
+    <Resource Include="Assets\Images\Numbers\num_6.png" />
+    <Resource Include="Assets\Images\Numbers\num_7.png" />
+    <Resource Include="Assets\Images\Numbers\num_3.png" />
+    <Resource Include="Assets\Images\Numbers\num_8.png" />
+    <Resource Include="Assets\Images\Player\character_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_14.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_15.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\character_16.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Player\dead2.png" />
+    <Resource Include="Assets\Images\Tiles\BrownRock_01.png" />
+    <Resource Include="Assets\Images\Tiles\fire.png" />
+    <Resource Include="Assets\Images\Tiles\GrassTile.png" />
+    <Resource Include="Assets\Images\Tiles\ground5.png" />
+    <Resource Include="Assets\Images\Tiles\Ground_Tile_01_A.png" />
+    <Resource Include="Assets\Images\Tiles\Ground_Tile_01_B.png" />
+    <Resource Include="Assets\Images\Tiles\Ground_Tile_01_C.png" />
+    <Resource Include="Assets\Images\Tiles\LightRock_01.png" />
+    <Resource Include="Json\Highscore.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Explosion\" />
+  </ItemGroup>
+
+</Project>

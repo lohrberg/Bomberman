@@ -1,0 +1,189 @@
+﻿<UserControl x:Class="BomberMan.Views.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BomberMan.Views"
+             xmlns:behaviors="clr-namespace:BomberMan.Behaviors"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:Tiles="clr-namespace:BomberMan.Views.Tiles"
+             xmlns:local1="clr-namespace:BomberMan.Models.Gameboard"
+             xmlns:local4="clr-namespace:BomberMan.Models.BombBoard"
+             xmlns:local3="clr-namespace:BomberMan.Models.Items.Bombs"
+             xmlns:local5="clr-namespace:BomberMan.Services"
+             xmlns:viewmodels="clr-namespace:BomberMan.ViewModels"
+             
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <!-- Lägg till den nya konverteraren -->
+        <local5:TileValueToColorConverter x:Key="TileValueToColorConverter"/>
+        <local5:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Assets/Images/MainMenuBg.png" 
+                        Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <Grid Background="#88000000" Visibility="{Binding IsCountdownVisible, Converter={StaticResource BooleanToVisibilityConverter}}" 
+              Panel.ZIndex="1">
+            <!-- Set ZIndex to make sure it's on top -->
+            <TextBlock Text="{Binding CountdownValue}" 
+                       FontSize="72" 
+                       Foreground="White" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"/>
+        </Grid>
+
+        <!-- Canvas för att rita både tiles och spelaren -->
+        <Canvas Width="800" Height="900" Background="Transparent"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+ 
+   
+
+
+        <!-- ItemsControl för att rita tiles direkt i Canvas -->
+        <ItemsControl ItemsSource="{Binding GameBoard.TilesCollection}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <!-- Ställer in position för varje tile baserat på TileX och TileY -->
+                    <Setter Property="Canvas.Left" Value="{Binding TileX}" />
+                    <Setter Property="Canvas.Top" Value="{Binding TileY}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+             
+                    <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Dynamiskt anpassad bakgrund baserat på Value -->
+                    <Grid Width="50" Height="50">
+                        <!-- Bakgrundsbild -->
+                        <Image Source="/Assets/Images/Tiles/Ground_Tile_01_B.png"
+                       Width="50" Height="50"/>
+                        
+                        <Image Width="50" Height="50">
+                        <Image.Source>
+                            <Binding Path="TileMaterial" Converter="{StaticResource TileValueToColorConverter}" />
+                        </Image.Source>
+                    </Image>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ItemsControl ItemsSource="{Binding ActiveBombs.ActiveBombList}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <!-- Ställer in position för varje tile baserat på TileX och TileY -->
+                    <Setter Property="Canvas.Left" Value="{Binding BombX}" />
+                    <Setter Property="Canvas.Top" Value="{Binding BombY}" />
+
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Dynamiskt anpassad bakgrund baserat på Value -->
+                    <Image Width="{Binding BombWidth}" Height="{Binding BombHeight}" Source="{Binding BombImages}"/>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+        <!-- Player sprite -->
+        <Image Source="{Binding Player.PlayerImage}" 
+     Width="{Binding Player.PlayerWidth}" 
+    Height="{Binding Player.PlayerHeight}" 
+    Canvas.Left="{Binding Player.PlayerX}" 
+    Canvas.Top="{Binding Player.PlayerY}" />
+
+            <Border Background="#A3C6FF" Padding="20" CornerRadius="5" Margin="0"
+        Width="750" Height="150" 
+        Canvas.Left="0" Canvas.Bottom="0" HorizontalAlignment="Center"
+        BorderBrush="#003366" BorderThickness="3">
+                <!-- Skuggning för att skapa djup -->
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" ShadowDepth="5" BlurRadius="10"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <!-- Gradient Background som matchar temat -->
+                    <StackPanel.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#5A85BF" Offset="0" />
+                            <!-- Mörkare ljusblå -->
+                            <GradientStop Color="#3A5C8E" Offset="1" />
+                            <!-- Mörkare mellanblå -->
+                        </LinearGradientBrush>
+                    </StackPanel.Background>
+
+
+                    <!-- Textblock för Score Label -->
+                    <TextBlock DataContext="{Binding ScoreModel}" Text="{Binding ScoreLabelText}" 
+                   FontSize="24" FontWeight="Bold" Foreground="#FF4500" 
+                   HorizontalAlignment="Center" Margin="10"/>
+
+                    <!-- ItemsControl som visar bilder -->
+                    <ItemsControl ItemsSource="{Binding ScoreImages}" HorizontalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding}" Width="40" Height="60" 
+                           Margin="5" Stretch="UniformToFill" SnapsToDevicePixels="True"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+
+
+
+            <!--Button x:Name="button" Content="Teta Score" Command="{Binding AddScoreCommand}" Canvas.Left="10" Canvas.Top="119"/-->
+
+        <ItemsControl ItemsSource="{Binding BoosterBoard.BoosterCollection}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Left" Value="{Binding BoosterX}" />
+                    <Setter Property="Canvas.Top" Value="{Binding BoosterY}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding BoosterImage}" Width="50" Height="50" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+
+    </Canvas>
+        </Grid>
+</UserControl>
