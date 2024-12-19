@@ -36,7 +36,7 @@ Visual Studio (med stöd för WPF).
 
 Installationssteg:
 Klona repot:
-git clone https://github.com/ditt-användarnamn/bomberman-wpf.git
+git clone https://github.com/lohrberg/Bomberman.git
 Öppna lösningen i Visual Studio.
 Bygg och kör projektet genom att trycka på F5.
 
