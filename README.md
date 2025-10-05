@@ -74,7 +74,7 @@ Spelet är uppbyggt enligt **MVVM-arkitekturen** för att separera logik och gr�
 | Tangent | Funktion |
 |----------|-----------|
 | ⬆️⬇️⬅️➡️ | Röra spelaren |
-| ␣ (Mellanslag) | Placera bomber |
+| (Mellanslag) | Placera/knuffa bomber |
 | ❓ Hjälp-knapp | Visa instruktioner och kort förklaring |
 
 ---
